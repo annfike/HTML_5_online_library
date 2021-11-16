@@ -3,6 +3,7 @@
 from http.server import HTTPServer, SimpleHTTPRequestHandler
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 import json
+from more_itertools import chunked
 
 def on_reload():
     with open("books.json", "r") as my_file:
@@ -13,6 +14,8 @@ def on_reload():
     for book in books:
         book['Обложка'] = book['Обложка'].replace('\\', '/')
 
+    books_chunked = list(chunked(books, 2))
+
 
     env = Environment(
         loader=FileSystemLoader('.'),
@@ -22,7 +25,7 @@ def on_reload():
     template = env.get_template('template.html')
 
     rendered_page = template.render(
-        books=books,
+        books=books_chunked,
     )
 
     with open('index.html', 'w', encoding="utf8") as file:
