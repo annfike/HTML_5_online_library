@@ -45,7 +45,7 @@ def download_txt(url, filename, books_path, params=None):
     response.raise_for_status()
     with filepath.open('w', encoding='utf-8') as file:
         file.write(response.text)
-    return str(Path.cwd() / filepath)
+    return str(filepath)
 
 
 def download_image(url, book_id, images_path, params=None):
