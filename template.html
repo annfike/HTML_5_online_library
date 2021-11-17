@@ -11,8 +11,38 @@
     <title>Hello, world!</title>
   </head>
   <body>
+    
 
     <div class="container">
+        <nav aria-label="Page navigation example">
+            {% if current_page == 1 %}
+            <ul class="pagination">
+              <li class="page-item active"><a class="page-link" href="index{{current_page}}.html">{{current_page}}</a></li>
+              <li class="page-item"><a class="page-link" href="index{{next_page}}.html">{{next_page}}</a></li>
+              <li class="page-item"><a class="page-link" href="index{{next_page}}.html">>></a></li>
+              <li class="page-item"><a class="page-link" href="index{{last_page}}.html">{{last_page}}</a></li>
+            </ul>
+            {% elif current_page == last_page %}
+            <ul class="pagination">
+                <li class="page-item"><a class="page-link" href="index1.html">1</a></li>
+                <li class="page-item"><a class="page-link" href="index{{prev_page}}.html"><<</a></li>
+                <li class="page-item"><a class="page-link" href="index{{prev_page}}.html">{{prev_page}}</a></li>
+                <li class="page-item active"><a class="page-link" href="index{{current_page}}.html">{{current_page}}</a></li>
+              </ul>
+            {% else %}
+              <ul class="pagination">
+                <li class="page-item"><a class="page-link" href="index1.html">1</a></li>
+                <li class="page-item"><a class="page-link" href="index{{prev_page}}.html"><<</a></li>
+                <li class="page-item"><a class="page-link" href="index{{prev_page}}.html">{{prev_page}}</a></li>
+                <li class="page-item active"><a class="page-link" href="index{{current_page}}.html">{{current_page}}</a></li>
+                <li class="page-item"><a class="page-link" href="index{{next_page}}.html">{{next_page}}</a></li>
+                <li class="page-item"><a class="page-link" href="index{{next_page}}.html">>></a></li>
+                <li class="page-item"><a class="page-link" href="index{{last_page}}.html">{{last_page}}</a></li>
+              </ul>
+            {% endif %}
+            
+        </nav>
+
         {%  for chank in books %} 
             <div class="card-group">
                 {%  for book in chank %}

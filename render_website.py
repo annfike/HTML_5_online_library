@@ -26,8 +26,16 @@ def on_reload():
         template = env.get_template('template.html')
 
         books_chunked = list(chunked(page, 2))
+        prev_page = number - 1
+        current_page = number
+        next_page = number + 1
+        last_page = len(pages)
         rendered_page = template.render(
             books=books_chunked,
+            prev_page=prev_page,
+            current_page=current_page,
+            next_page=next_page,
+            last_page=last_page,
         )
 
         with open(f'pages/index{number}.html', 'w', encoding="utf8") as file:
