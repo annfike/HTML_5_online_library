@@ -4,32 +4,34 @@ from http.server import HTTPServer, SimpleHTTPRequestHandler
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 import json
 from more_itertools import chunked
+import os
+
 
 def on_reload():
     with open("books.json", "r") as my_file:
         books_json = my_file.read()
-
     books = json.loads(books_json)
-
     for book in books:
         book['Обложка'] = book['Обложка'].replace('\\', '/')
+        book['Ссылка'] = book['Ссылка'].replace('\\', '/')
 
-    books_chunked = list(chunked(books, 2))
+    pages = list(chunked(books, 10))
 
+    os.makedirs('pages', exist_ok=True)
+    for number, page in enumerate(pages, 1):
+        env = Environment(
+            loader=FileSystemLoader('.'),
+            autoescape=select_autoescape(['html', 'xml'])
+        )
+        template = env.get_template('template.html')
 
-    env = Environment(
-        loader=FileSystemLoader('.'),
-        autoescape=select_autoescape(['html', 'xml'])
-    )
+        books_chunked = list(chunked(page, 2))
+        rendered_page = template.render(
+            books=books_chunked,
+        )
 
-    template = env.get_template('template.html')
-
-    rendered_page = template.render(
-        books=books_chunked,
-    )
-
-    with open('index.html', 'w', encoding="utf8") as file:
-        file.write(rendered_page)
+        with open(f'pages/index{number}.html', 'w', encoding="utf8") as file:
+            file.write(rendered_page)
 
 #server = HTTPServer(('0.0.0.0', 8000), SimpleHTTPRequestHandler)
 #server.serve_forever()
