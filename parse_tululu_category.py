@@ -1,10 +1,10 @@
 import argparse
+import json
 import os
 import pathlib
+import re
 from pathlib import Path
 from urllib.parse import unquote, urljoin, urlsplit
-import json
-import re
 
 import requests
 from bs4 import BeautifulSoup
@@ -58,7 +58,6 @@ def download_image(url, book_id, images_path, params=None):
     response.raise_for_status()
     with filepath.open('wb') as file:
         file.write(response.content)
-    #return str(Path.cwd() / filepath)
     return str(filepath)
 
 
@@ -121,8 +120,6 @@ def main():
     filepath_json = Path(args.json_path) / 'books.json'
     with open(filepath_json, 'w') as file:
         json.dump(books, file, ensure_ascii=False)
-
-
 
 
 if __name__ == '__main__':

@@ -13,77 +13,63 @@
     <meta name="description" content="Большая бесплатная библиотека">
   </head>
   <body>
-    
-
     <div class="container">
-        <nav aria-label="Page navigation example">
-            {% if current_page == 1 %}
-            <ul class="pagination">
-              <li class="page-item active"><a class="page-link" href="index{{current_page}}.html">{{current_page}}</a></li>
-              <li class="page-item"><a class="page-link" href="index{{next_page}}.html">{{next_page}}</a></li>
-              <li class="page-item"><a class="page-link" href="index{{next_page}}.html">>></a></li>
-              <li class="page-item"><a class="page-link" href="index{{last_page}}.html">{{last_page}}</a></li>
-            </ul>
-            {% elif current_page == last_page %}
-            <ul class="pagination">
-                <li class="page-item"><a class="page-link" href="index1.html">1</a></li>
-                <li class="page-item"><a class="page-link" href="index{{prev_page}}.html"><<</a></li>
-                <li class="page-item"><a class="page-link" href="index{{prev_page}}.html">{{prev_page}}</a></li>
-                <li class="page-item active"><a class="page-link" href="index{{current_page}}.html">{{current_page}}</a></li>
-              </ul>
-            {% else %}
-              <ul class="pagination">
-                <li class="page-item"><a class="page-link" href="index1.html">1</a></li>
-                <li class="page-item"><a class="page-link" href="index{{prev_page}}.html"><<</a></li>
-                <li class="page-item"><a class="page-link" href="index{{prev_page}}.html">{{prev_page}}</a></li>
-                <li class="page-item active"><a class="page-link" href="index{{current_page}}.html">{{current_page}}</a></li>
-                <li class="page-item"><a class="page-link" href="index{{next_page}}.html">{{next_page}}</a></li>
-                <li class="page-item"><a class="page-link" href="index{{next_page}}.html">>></a></li>
-                <li class="page-item"><a class="page-link" href="index{{last_page}}.html">{{last_page}}</a></li>
-              </ul>
-            {% endif %}
-            
-        </nav>
-
-        {%  for chank in books %} 
-            <div class="card-group">
-                {%  for book in chank %}
-                    <div class="card mb-3" style="max-width: 540px;">
-                        <div class="row no-gutters">
-                        <div class="col-md-4">
-                            <img src="{{'../' ~ book.Обложка|urlencode}}" class="card-img" alt="{{book.Заголовок}}">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                            <h5 class="card-title">{{book.Заголовок}}</h5>
-                            <p class="card-text">{{book.Автор}}</p>
-                            {%  for genre in book.Жанр %}
-                              <span class="badge badge-light">{{genre}}</span>
-                            {% endfor %}
-                            <p><a href="{{'../' ~ book.Ссылка|urlencode}}" target="_blank"
-                                rel="noopener noreferrer" class="href">Читать</a></p>
-                            </div>
-                        </div>
-                        </div>
-                    </div>       
-                {% endfor %}
-            </div>
+      <nav aria-label="Page navigation example">
+        {% if current_page == 1 %}
+          <ul class="pagination">
+            <li class="page-item active"><a class="page-link" href="index{{current_page}}.html">{{current_page}}</a></li>
+            <li class="page-item"><a class="page-link" href="index{{next_page}}.html">{{next_page}}</a></li>
+            <li class="page-item"><a class="page-link" href="index{{next_page}}.html">>></a></li>
+            <li class="page-item"><a class="page-link" href="index{{last_page}}.html">{{last_page}}</a></li>
+          </ul>
+        {% elif current_page == last_page %}
+          <ul class="pagination">
+            <li class="page-item"><a class="page-link" href="index1.html">1</a></li>
+            <li class="page-item"><a class="page-link" href="index{{prev_page}}.html"><<</a></li>
+            <li class="page-item"><a class="page-link" href="index{{prev_page}}.html">{{prev_page}}</a></li>
+            <li class="page-item active"><a class="page-link" href="index{{current_page}}.html">{{current_page}}</a></li>
+          </ul>
+        {% else %}
+          <ul class="pagination">
+            <li class="page-item"><a class="page-link" href="index1.html">1</a></li>
+            <li class="page-item"><a class="page-link" href="index{{prev_page}}.html"><<</a></li>
+            <li class="page-item"><a class="page-link" href="index{{prev_page}}.html">{{prev_page}}</a></li>
+            <li class="page-item active"><a class="page-link" href="index{{current_page}}.html">{{current_page}}</a></li>
+            <li class="page-item"><a class="page-link" href="index{{next_page}}.html">{{next_page}}</a></li>
+            <li class="page-item"><a class="page-link" href="index{{next_page}}.html">>></a></li>
+            <li class="page-item"><a class="page-link" href="index{{last_page}}.html">{{last_page}}</a></li>
+          </ul>
+        {% endif %}
+      </nav>
+        {% for chank in books %} 
+          <div class="card-group">
+            {%  for book in chank %}
+              <div class="card mb-3" style="max-width: 540px;">
+                <div class="row no-gutters">
+                  <div class="col-md-4">
+                    <img src="{{'../' ~ book.Обложка|urlencode}}" class="card-img" alt="{{book.Заголовок}}">
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <h5 class="card-title">{{book.Заголовок}}</h5>
+                      <p class="card-text">{{book.Автор}}</p>
+                      {% for genre in book.Жанр %}
+                        <span class="badge badge-light">{{genre}}</span>
+                      {% endfor %}
+                      <p><a href="{{'../' ~ book.Ссылка|urlencode}}" target="_blank"
+                          rel="noopener noreferrer" class="href">Читать</a></p>
+                    </div>
+                  </div>
+                </div>
+              </div>       
+            {% endfor %}
+          </div>
         {% endfor %}
     </div>
-
-
-    
-
-    <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
     <script src="../static/jquery-3.5.1.slim.min.js"></script>
     <script src="../static/bootstrap.bundle.min.js"></script>
 
-    <!-- Option 2: jQuery, Popper.js, and Bootstrap JS
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
-    -->
   </body>
 </html>
