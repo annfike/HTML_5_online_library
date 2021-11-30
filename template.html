@@ -14,29 +14,56 @@
   </head>
   <body>
     <div class="container">
-      <nav aria-label="Page navigation example">
+      <nav aria-label="Page navigation example" class = "mt-3">
         {% if current_page == 1 %}
           <ul class="pagination">
             <li class="page-item active"><a class="page-link" href="index{{current_page}}.html">{{current_page}}</a></li>
-            <li class="page-item"><a class="page-link" href="index{{next_page}}.html">{{next_page}}</a></li>
-            <li class="page-item"><a class="page-link" href="index{{next_page}}.html">>></a></li>
+            <li class="page-item"><a class="page-link" href="index{{current_page_plus1}}.html">{{current_page_plus1}}</a></li>
+            <li class="page-item"><a class="page-link" href="index{{current_page_plus2}}.html">{{current_page_plus2}}</a></li>
+            <li class="page-item"><a class="page-link" href="index{{current_page_plus3}}.html">{{current_page_plus3}}</a></li>
+            <li class="page-item"><a class="page-link" href="index{{current_page_plus1}}.html">>></a></li>
             <li class="page-item"><a class="page-link" href="index{{last_page}}.html">{{last_page}}</a></li>
+          </ul>
+        {% elif current_page == 2 %}
+          <ul class="pagination">
+            <li class="page-item"><a class="page-link" href="index{{current_page_minus1}}.html">{{current_page_minus1}}</a></li>
+            <li class="page-item active"><a class="page-link" href="index{{current_page}}.html">{{current_page}}</a></li>
+            <li class="page-item"><a class="page-link" href="index{{current_page_plus1}}.html">{{current_page_plus1}}</a></li>
+            <li class="page-item"><a class="page-link" href="index{{current_page_plus2}}.html">{{current_page_plus2}}</a></li>
+            <li class="page-item"><a class="page-link" href="index{{current_page_plus3}}.html">{{current_page_plus3}}</a></li>
+            <li class="page-item"><a class="page-link" href="index{{current_page_plus1}}.html">>></a></li>
+            <li class="page-item"><a class="page-link" href="index{{last_page}}.html">{{last_page}}</a></li>
+          </ul>  
+        {% elif current_page == before_last_page %}
+          <ul class="pagination">
+            <li class="page-item"><a class="page-link" href="index1.html">1</a></li>
+            <li class="page-item"><a class="page-link" href="index{{current_page_minus1}}.html"><<</a></li>
+            <li class="page-item"><a class="page-link" href="index{{current_page_minus3}}.html">{{current_page_minus3}}</a></li>
+            <li class="page-item"><a class="page-link" href="index{{current_page_minus2}}.html">{{current_page_minus2}}</a></li>
+            <li class="page-item"><a class="page-link" href="index{{current_page_minus1}}.html">{{current_page_minus1}}</a></li>
+            <li class="page-item active"><a class="page-link" href="index{{current_page}}.html">{{current_page}}</a></li>
+            <li class="page-item"><a class="page-link" href="index{{current_page_plus1}}.html">{{current_page_plus1}}</a></li>
           </ul>
         {% elif current_page == last_page %}
           <ul class="pagination">
             <li class="page-item"><a class="page-link" href="index1.html">1</a></li>
-            <li class="page-item"><a class="page-link" href="index{{prev_page}}.html"><<</a></li>
-            <li class="page-item"><a class="page-link" href="index{{prev_page}}.html">{{prev_page}}</a></li>
+            <li class="page-item"><a class="page-link" href="index{{current_page_minus1}}.html"><<</a></li>
+            <li class="page-item"><a class="page-link" href="index{{current_page_minus3}}.html">{{current_page_minus3}}</a></li>
+            <li class="page-item"><a class="page-link" href="index{{current_page_minus2}}.html">{{current_page_minus2}}</a></li>
+            <li class="page-item"><a class="page-link" href="index{{current_page_minus1}}.html">{{current_page_minus1}}</a></li>
             <li class="page-item active"><a class="page-link" href="index{{current_page}}.html">{{current_page}}</a></li>
+            
           </ul>
         {% else %}
           <ul class="pagination">
             <li class="page-item"><a class="page-link" href="index1.html">1</a></li>
-            <li class="page-item"><a class="page-link" href="index{{prev_page}}.html"><<</a></li>
-            <li class="page-item"><a class="page-link" href="index{{prev_page}}.html">{{prev_page}}</a></li>
+            <li class="page-item"><a class="page-link" href="index{{current_page_minus1}}.html"><<</a></li>
+            <li class="page-item"><a class="page-link" href="index{{current_page_minus2}}.html">{{current_page_minus2}}</a></li>
+            <li class="page-item"><a class="page-link" href="index{{current_page_minus1}}.html">{{current_page_minus1}}</a></li>
             <li class="page-item active"><a class="page-link" href="index{{current_page}}.html">{{current_page}}</a></li>
-            <li class="page-item"><a class="page-link" href="index{{next_page}}.html">{{next_page}}</a></li>
-            <li class="page-item"><a class="page-link" href="index{{next_page}}.html">>></a></li>
+            <li class="page-item"><a class="page-link" href="index{{current_page_plus1}}.html">{{current_page_plus1}}</a></li>
+            <li class="page-item"><a class="page-link" href="index{{current_page_plus2}}.html">{{current_page_plus2}}</a></li>
+            <li class="page-item"><a class="page-link" href="index{{current_page_plus1}}.html">>></a></li>
             <li class="page-item"><a class="page-link" href="index{{last_page}}.html">{{last_page}}</a></li>
           </ul>
         {% endif %}
@@ -47,7 +74,7 @@
               <div class="card mb-3" style="max-width: 540px;">
                 <div class="row no-gutters">
                   <div class="col-md-4">
-                    <img src="{{'../' ~ book.Обложка|urlencode}}" class="card-img" alt="{{book.Заголовок}}">
+                    <img src="../{{book.Обложка|urlencode}}" class="card-img" alt="{{book.Заголовок}}">
                   </div>
                   <div class="col-md-8">
                     <div class="card-body">
