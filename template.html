@@ -18,52 +18,52 @@
         {% if current_page == 1 %}
           <ul class="pagination">
             <li class="page-item active"><a class="page-link" href="index{{current_page}}.html">{{current_page}}</a></li>
-            <li class="page-item"><a class="page-link" href="index{{current_page_plus1}}.html">{{current_page_plus1}}</a></li>
-            <li class="page-item"><a class="page-link" href="index{{current_page_plus2}}.html">{{current_page_plus2}}</a></li>
-            <li class="page-item"><a class="page-link" href="index{{current_page_plus3}}.html">{{current_page_plus3}}</a></li>
-            <li class="page-item"><a class="page-link" href="index{{current_page_plus1}}.html">>></a></li>
+            <li class="page-item"><a class="page-link" href="index{{current_page+1}}.html">{{current_page+1}}</a></li>
+            <li class="page-item"><a class="page-link" href="index{{current_page+2}}.html">{{current_page+2}}</a></li>
+            <li class="page-item"><a class="page-link" href="index{{current_page+3}}.html">{{current_page+3}}</a></li>
+            <li class="page-item"><a class="page-link" href="index{{current_page+1}}.html">>></a></li>
             <li class="page-item"><a class="page-link" href="index{{last_page}}.html">{{last_page}}</a></li>
           </ul>
         {% elif current_page == 2 %}
           <ul class="pagination">
-            <li class="page-item"><a class="page-link" href="index{{current_page_minus1}}.html">{{current_page_minus1}}</a></li>
+            <li class="page-item"><a class="page-link" href="index{{current_page-1}}.html">{{current_page-1}}</a></li>
             <li class="page-item active"><a class="page-link" href="index{{current_page}}.html">{{current_page}}</a></li>
-            <li class="page-item"><a class="page-link" href="index{{current_page_plus1}}.html">{{current_page_plus1}}</a></li>
-            <li class="page-item"><a class="page-link" href="index{{current_page_plus2}}.html">{{current_page_plus2}}</a></li>
-            <li class="page-item"><a class="page-link" href="index{{current_page_plus3}}.html">{{current_page_plus3}}</a></li>
-            <li class="page-item"><a class="page-link" href="index{{current_page_plus1}}.html">>></a></li>
+            <li class="page-item"><a class="page-link" href="index{{current_page+1}}.html">{{current_page+1}}</a></li>
+            <li class="page-item"><a class="page-link" href="index{{current_page+2}}.html">{{current_page+2}}</a></li>
+            <li class="page-item"><a class="page-link" href="index{{current_page+3}}.html">{{current_page+3}}</a></li>
+            <li class="page-item"><a class="page-link" href="index{{current_page+1}}.html">>></a></li>
             <li class="page-item"><a class="page-link" href="index{{last_page}}.html">{{last_page}}</a></li>
           </ul>  
         {% elif current_page == before_last_page %}
           <ul class="pagination">
             <li class="page-item"><a class="page-link" href="index1.html">1</a></li>
-            <li class="page-item"><a class="page-link" href="index{{current_page_minus1}}.html"><<</a></li>
-            <li class="page-item"><a class="page-link" href="index{{current_page_minus3}}.html">{{current_page_minus3}}</a></li>
-            <li class="page-item"><a class="page-link" href="index{{current_page_minus2}}.html">{{current_page_minus2}}</a></li>
-            <li class="page-item"><a class="page-link" href="index{{current_page_minus1}}.html">{{current_page_minus1}}</a></li>
+            <li class="page-item"><a class="page-link" href="index{{current_page-1}}.html"><<</a></li>
+            <li class="page-item"><a class="page-link" href="index{{current_page-3}}.html">{{current_page-3}}</a></li>
+            <li class="page-item"><a class="page-link" href="index{{current_page-2}}.html">{{current_page-2}}</a></li>
+            <li class="page-item"><a class="page-link" href="index{{current_page-1}}.html">{{current_page-1}}</a></li>
             <li class="page-item active"><a class="page-link" href="index{{current_page}}.html">{{current_page}}</a></li>
-            <li class="page-item"><a class="page-link" href="index{{current_page_plus1}}.html">{{current_page_plus1}}</a></li>
+            <li class="page-item"><a class="page-link" href="index{{current_page+1}}.html">{{current_page+1}}</a></li>
           </ul>
         {% elif current_page == last_page %}
           <ul class="pagination">
             <li class="page-item"><a class="page-link" href="index1.html">1</a></li>
-            <li class="page-item"><a class="page-link" href="index{{current_page_minus1}}.html"><<</a></li>
-            <li class="page-item"><a class="page-link" href="index{{current_page_minus3}}.html">{{current_page_minus3}}</a></li>
-            <li class="page-item"><a class="page-link" href="index{{current_page_minus2}}.html">{{current_page_minus2}}</a></li>
-            <li class="page-item"><a class="page-link" href="index{{current_page_minus1}}.html">{{current_page_minus1}}</a></li>
+            <li class="page-item"><a class="page-link" href="index{{current_page-1}}.html"><<</a></li>
+            <li class="page-item"><a class="page-link" href="index{{current_page-3}}.html">{{current_page-3}}</a></li>
+            <li class="page-item"><a class="page-link" href="index{{current_page-2}}.html">{{current_page-2}}</a></li>
+            <li class="page-item"><a class="page-link" href="index{{current_page-1}}.html">{{current_page-1}}</a></li>
             <li class="page-item active"><a class="page-link" href="index{{current_page}}.html">{{current_page}}</a></li>
             
           </ul>
         {% else %}
           <ul class="pagination">
             <li class="page-item"><a class="page-link" href="index1.html">1</a></li>
-            <li class="page-item"><a class="page-link" href="index{{current_page_minus1}}.html"><<</a></li>
-            <li class="page-item"><a class="page-link" href="index{{current_page_minus2}}.html">{{current_page_minus2}}</a></li>
-            <li class="page-item"><a class="page-link" href="index{{current_page_minus1}}.html">{{current_page_minus1}}</a></li>
+            <li class="page-item"><a class="page-link" href="index{{current_page-1}}.html"><<</a></li>
+            <li class="page-item"><a class="page-link" href="index{{current_page-2}}.html">{{current_page-2}}</a></li>
+            <li class="page-item"><a class="page-link" href="index{{current_page-1}}.html">{{current_page-1}}</a></li>
             <li class="page-item active"><a class="page-link" href="index{{current_page}}.html">{{current_page}}</a></li>
-            <li class="page-item"><a class="page-link" href="index{{current_page_plus1}}.html">{{current_page_plus1}}</a></li>
-            <li class="page-item"><a class="page-link" href="index{{current_page_plus2}}.html">{{current_page_plus2}}</a></li>
-            <li class="page-item"><a class="page-link" href="index{{current_page_plus1}}.html">>></a></li>
+            <li class="page-item"><a class="page-link" href="index{{current_page+1}}.html">{{current_page+1}}</a></li>
+            <li class="page-item"><a class="page-link" href="index{{current_page+2}}.html">{{current_page+2}}</a></li>
+            <li class="page-item"><a class="page-link" href="index{{current_page+1}}.html">>></a></li>
             <li class="page-item"><a class="page-link" href="index{{last_page}}.html">{{last_page}}</a></li>
           </ul>
         {% endif %}
