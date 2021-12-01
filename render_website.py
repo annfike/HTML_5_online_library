@@ -14,7 +14,8 @@ def on_reload():
         book['Обложка'] = book['Обложка'].replace('\\', '/')
         book['Ссылка'] = book['Ссылка'].replace('\\', '/')
 
-    pages = list(chunked(books, books_on_page=10))
+    books_on_page = 10
+    pages = list(chunked(books, books_on_page))
 
     os.makedirs('pages', exist_ok=True)
     for number, page in enumerate(pages, 1):
@@ -28,15 +29,9 @@ def on_reload():
 
         rendered_page = template.render(
             books=books_chunked,
-            current_page_minus3=number - 3,
-            current_page_minus2=number - 2,
-            current_page_minus1=number - 1,
             current_page=number,
-            current_page_plus1=number + 1,
-            current_page_plus2=number + 2,
-            last_page=len(pages),
-            current_page_plus3=number + 3,    
-            before_last_page=len(pages) - 1,       
+            last_page=len(pages),      
+            before_last_page=len(pages)-1,  
         )
 
         with open(f'pages/index{number}.html', 'w', encoding="utf8") as file:
